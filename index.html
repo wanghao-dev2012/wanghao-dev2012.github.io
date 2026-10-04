@@ -198,8 +198,8 @@
   document.getElementById("grid").innerHTML = VIDEOS.map(v => `
     <article class="video-card${v.featured ? " featured" : ""}">
       <div class="frame">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=${v.aid}&bvid=${v.bvid}&cid=${v.cid}&p=1"
-          scrolling="no" frameborder="0" allowfullscreen="true" allow="fullscreen; autoplay; encrypted-media"
+        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=${v.aid}&bvid=${v.bvid}&cid=${v.cid}&p=1&autoplay=0&t=0"
+          scrolling="no" frameborder="0" allowfullscreen="true" allow="fullscreen; encrypted-media"
           loading="lazy" title="${v.title}"></iframe>
       </div>
       <div class="meta">
