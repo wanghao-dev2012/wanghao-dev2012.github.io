@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>灵感码匠 · 热爱编程与 Vibe Coding</title>
+<meta name="description" content="灵感码匠的个人博客：一个热爱编程和 Vibe Coding 的人，用代码与 AI 造梦。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>" />
+<style>
+  :root{
+    --bg:#0a0c14; --ink:#e9ecf8; --muted:#98a1bd;
+    --a:#7c5cff; --b:#00d4ff; --c:#ff5ca8;
+    --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7; overflow-x:hidden;
+  }
+  body::before{content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(52% 42% at 12% 8%, rgba(124,92,255,.22), transparent 62%),
+      radial-gradient(46% 38% at 88% 12%, rgba(0,212,255,.16), transparent 62%),
+      radial-gradient(56% 46% at 50% 108%, rgba(255,92,168,.14), transparent 62%),
+      var(--bg);}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:46px 46px;
+    -webkit-mask-image:radial-gradient(70% 60% at 50% 40%,#000 30%,transparent 100%);
+            mask-image:radial-gradient(70% 60% at 50% 40%,#000 30%,transparent 100%);}
+
+  /* ---------- 导航 ---------- */
+  .nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+    padding:14px clamp(20px,5vw,64px);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:rgba(10,12,20,.65);border-bottom:1px solid var(--line)}
+  .brand{font-weight:800;font-size:17px;letter-spacing:.5px;text-decoration:none;color:var(--ink)}
+  .brand em{font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:14.5px;transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+
+  /* ---------- Hero ---------- */
+  .hero{max-width:980px;margin:0 auto;padding:clamp(90px,15vh,150px) 24px 40px;text-align:center}
+  .hello{display:inline-block;padding:6px 16px;border:1px solid var(--line);border-radius:999px;
+    font-size:13px;color:var(--muted);background:var(--card);margin-bottom:26px}
+  .name{font-size:clamp(52px,10vw,96px);font-weight:900;letter-spacing:2px;line-height:1.12;
+    background:linear-gradient(100deg,var(--ink) 18%,var(--a) 55%,var(--b) 90%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{margin-top:18px;font-size:clamp(17px,2.6vw,22px);color:var(--muted)}
+  .sub b{color:var(--ink);font-weight:700}
+  .badges{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .badges span{padding:7px 16px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card);font-size:14px;color:var(--ink)}
+  .cta{margin-top:38px}
+  .btn{display:inline-block;padding:13px 30px;border-radius:12px;text-decoration:none;
+    font-weight:600;font-size:15px;transition:.25s}
+  .btn.primary{background:linear-gradient(100deg,var(--a),var(--b));color:#fff;
+    box-shadow:0 8px 30px rgba(124,92,255,.35)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,212,255,.35)}
+  .btn.ghost{border:1px solid var(--line);color:var(--ink);margin-left:12px;background:var(--card)}
+  .btn.ghost:hover{border-color:var(--b);color:var(--b);transform:translateY(-2px)}
+
+  /* ---------- 通用区块 ---------- */
+  section{max-width:980px;margin:0 auto;padding:72px 24px}
+  .sec-title{font-size:clamp(26px,4vw,34px);font-weight:800}
+  .sec-sub{color:var(--muted);margin:6px 0 38px}
+  .sec-title em{font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- 关于 ---------- */
+  .about p.intro{color:var(--muted);font-size:16.5px;max-width:760px}
+  .about p.intro b{color:var(--ink)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:34px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;transition:.3s}
+  .card:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.5);background:rgba(124,92,255,.08)}
+  .card .ico{font-size:28px}
+  .card h3{margin:12px 0 8px;font-size:18px}
+  .card p{color:var(--muted);font-size:14.5px}
+
+  /* ---------- 视频 ---------- */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .video-card{background:var(--card);border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+  .video-card:hover{transform:translateY(-4px);border-color:rgba(0,212,255,.45)}
+  .video-card.featured{grid-column:1/-1}
+  .frame{position:relative;aspect-ratio:16/9;background:#000}
+  .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px}
+  .meta h3{font-size:16.5px;font-weight:700}
+  .meta .d{color:var(--muted);font-size:13px;margin-top:3px}
+  .meta a{color:var(--b);text-decoration:none;font-size:14px;white-space:nowrap}
+  .meta a:hover{text-decoration:underline}
+  .star{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;margin-left:10px;
+    background:linear-gradient(90deg,var(--a),var(--b));color:#fff;vertical-align:2px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+
+  /* ---------- 页脚 ---------- */
+  footer{border-top:1px solid var(--line);margin-top:60px;padding:34px 24px;
+    text-align:center;color:var(--muted);font-size:14px}
+  footer a{color:var(--b);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  /* ---------- 入场动画 ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="#">灵<em>感码匠</em></a>
+  <div class="nav-links">
+    <a href="#about">关于我</a>
+    <a href="#videos">我的视频</a>
+    <a href="https://github.com/wanghao-dev2012" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="hello">👋 你好，欢迎来到我的小站</span>
+  <h1 class="name">灵感码匠</h1>
+  <p class="sub">一个<b>热爱编程</b>的人，正在用 <b>Vibe Coding</b> 把脑洞变成现实。</p>
+  <div class="badges">
+    <span>💻 热爱编程</span>
+    <span>✨ Vibe Coding</span>
+    <span>🤖 AI 创作</span>
+  </div>
+  <div class="cta">
+    <a class="btn primary" href="#videos">🎬 看我的视频</a>
+    <a class="btn ghost" href="https://github.com/wanghao-dev2012" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</header>
+
+<section class="about reveal" id="about">
+  <h2 class="sec-title">关于<em>我</em></h2>
+  <p class="sec-sub">简单介绍一下这个沉迷写代码的人</p>
+  <p class="intro">
+    你好，我是灵感码匠 —— 一个热爱编程的人。从第一行 <b>Hello World</b> 开始，写代码就成了我表达想法的方式。<br /><br />
+    而现在，我找到了更带感的新玩法：<b>Vibe Coding</b>。把脑洞直接说给 AI，让灵感当场变成能跑的程序 ——
+    我出想法和方向，AI 出代码，这就是我的创作流水线。偶尔我也用 AI 做点影像实验，用光、粒子和文字讲故事。
+  </p>
+  <div class="cards">
+    <div class="card">
+      <div class="ico">⌨️</div>
+      <h3>热爱编程</h3>
+      <p>从第一行 Hello World 写到现在，代码是我最熟悉的语言，也是我造梦的工具。</p>
+    </div>
+    <div class="card">
+      <div class="ico">✨</div>
+      <h3>Vibe Coding</h3>
+      <p>不纠结语法细节，专注灵感本身。对 AI 说出想法，几轮对话变成能跑的产品。</p>
+    </div>
+    <div class="card">
+      <div class="ico">🎬</div>
+      <h3>AI 影像实验</h3>
+      <p>用生成式 AI 做短片：光、粒子、线条和文字，都能成为讲故事的素材。</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" id="videos">
+  <h2 class="sec-title">我的<em>视频</em></h2>
+  <p class="sec-sub">一些用 AI 做的影像实验，欢迎去 B 站观看 👇</p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer>
+  © 2026 灵感码匠 · 用 ❤️ 和 AI 一起搭建 · 托管于 <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
+</footer>
+
+<script>
+  // ➕ 以后加新视频：把新 iframe 里的 aid / bvid / cid 抄进来，在下面加一行即可（数组顺序 = 页面顺序）
+  const VIDEOS = [
+    { bvid: "BV1pQHL6uEwt", aid: "117382244729236", cid: "42456517931",
+      title: "AI 是工具，人类是方向", desc: "只靠光、粒子、线条和文字讲完的 2 分钟", featured: true },
+    { bvid: "BV1qJHL6cEhc", aid: "117382261508494", cid: "42456647613",
+      title: "中国 AI", desc: "用影像致敬中国 AI" },
+    { bvid: "BV1qJHL6cEin", aid: "117382261508689", cid: "42456645865",
+      title: "从一团火到人类现代巅峰", desc: "从一团火讲起的人类文明史" },
+  ];
+
+  document.getElementById("grid").innerHTML = VIDEOS.map(v => `
+    <article class="video-card${v.featured ? " featured" : ""}">
+      <div class="frame">
+        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=${v.aid}&bvid=${v.bvid}&cid=${v.cid}&p=1"
+          scrolling="no" frameborder="0" allowfullscreen="true" allow="fullscreen; autoplay; encrypted-media"
+          loading="lazy" title="${v.title}"></iframe>
+      </div>
+      <div class="meta">
+        <div>
+          <h3>${v.title}${v.featured ? '<span class="star">置顶</span>' : ""}</h3>
+          ${v.desc ? `<p class="d">${v.desc}</p>` : ""}
+        </div>
+        <a href="https://www.bilibili.com/video/${v.bvid}" target="_blank" rel="noopener">B 站观看 ↗</a>
+      </div>
+    </article>`).join("");
+
+  // 滚动入场动画（不支持 IntersectionObserver 的老浏览器直接全部显示）
+  const items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) { items.forEach(el => el.classList.add("on")); }
+  else {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+    }), { threshold: .1 });
+    items.forEach(el => io.observe(el));
+  }
+</script>
+</body>
+</html>
