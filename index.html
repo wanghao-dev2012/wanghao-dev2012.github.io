@@ -92,7 +92,7 @@
   .video-card:hover{transform:translateY(-4px);border-color:rgba(0,212,255,.45)}
   .video-card.featured{grid-column:1/-1}
   .frame{position:relative;aspect-ratio:16/9;background:#000}
-  .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
   .meta{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px}
   .meta h3{font-size:16.5px;font-weight:700}
   .meta .d{color:var(--muted);font-size:13px;margin-top:3px}
@@ -183,24 +183,24 @@
 </footer>
 
 <script>
-  // ➕ 以后加新视频：把新 iframe 里的 aid / bvid / cid 抄进来，在下面加一行即可（数组顺序 = 页面顺序）
+  // ➕ 以后加新视频：把视频文件放进 videos/ 文件夹，在下面加一行即可（数组顺序 = 页面顺序）
   const VIDEOS = [
-    { bvid: "BV1pQHL6uEwt", aid: "117382244729236", cid: "42456517931",
+    { bvid: "BV1pQHL6uEwt", file: "videos/ai-direction.mp4", poster: "videos/ai-direction.jpg",
       title: "AI 是工具，人类是方向", desc: "只靠光、粒子、线条和文字讲完的 2 分钟", featured: true },
-    { bvid: "BV1qJHL6cEhc", aid: "117382261508494", cid: "42456647613",
+    { bvid: "BV1qJHL6cEhc", file: "videos/china-ai.mp4", poster: "videos/china-ai.jpg",
       title: "中国 AI", desc: "用影像致敬中国 AI" },
-    { bvid: "BV1qJHL6cEin", aid: "117382261508689", cid: "42456645865",
+    { bvid: "BV1qJHL6cEin", file: "videos/fire-civilization.mp4", poster: "videos/fire-civilization.jpg",
       title: "从一团火到人类现代巅峰", desc: "从一团火讲起的人类文明史" },
-    { bvid: "BV1uHHE64ETs", aid: "117382680939145", cid: "42459661879",
+    { bvid: "BV1uHHE64ETs", file: "videos/ai-encounter.mp4", poster: "videos/ai-encounter.jpg",
       title: "AI 能算尽一切，唯独算不出方向", desc: "数字是冷的，但让它变热的那个动作，AI 学不会" },
   ];
 
   document.getElementById("grid").innerHTML = VIDEOS.map(v => `
     <article class="video-card${v.featured ? " featured" : ""}">
       <div class="frame">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=${v.aid}&bvid=${v.bvid}&cid=${v.cid}&p=1&autoplay=0&t=0"
-          scrolling="no" frameborder="0" allowfullscreen="true" allow="fullscreen; encrypted-media"
-          loading="lazy" title="${v.title}"></iframe>
+        <video controls preload="none" poster="${v.poster}" playsinline>
+          <source src="${v.file}" type="video/mp4">
+        </video>
       </div>
       <div class="meta">
         <div>
