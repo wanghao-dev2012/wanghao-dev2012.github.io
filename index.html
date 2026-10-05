@@ -95,7 +95,7 @@
   .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
   .meta{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px}
   .meta h3{font-size:16.5px;font-weight:700}
-  .meta .d{color:var(--muted);font-size:13px;margin-top:3px}
+  .meta .d{color:var(--muted);font-size:13px;margin-top:3px;white-space:pre-line}
   .meta a{color:var(--b);text-decoration:none;font-size:14px;white-space:nowrap}
   .meta a:hover{text-decoration:underline}
   .star{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;margin-left:10px;
@@ -193,6 +193,9 @@
       title: "从一团火到人类现代巅峰", desc: "从一团火讲起的人类文明史" },
     { bvid: "BV1uHHE64ETs", file: "videos/ai-encounter.mp4", poster: "videos/ai-encounter.jpg",
       title: "AI 能算尽一切，唯独算不出方向", desc: "数字是冷的，但让它变热的那个动作，AI 学不会" },
+    { file: "videos/mao-master.mp4", poster: "videos/mao-master.jpg",
+      title: "从韶山冲到天安门：毛主席的一生",
+      desc: "全程无一张图片、无一段素材——113 秒全部由粒子实时生成。\n\n一根金色轨迹从韶山冲出发，穿过求索、建党、星火、长征、延安、谈判、开国，一直走到 1976 年的星河。\n\n十段卡点，每一段的落点都压在小节线上：\n0:00  1893.12.26  生于湖南湘潭韶山冲\n0:09  1911 辛亥革命投笔从戎 · 1919 五四运动，接受马克思主义\n0:21  1921.7  出席中国共产党第一次全国代表大会\n0:32  1927.9  领导秋收起义，引兵井冈山，开辟农村革命根据地\n0:43  1934.10 中央红军从瑞金出发 · 1935.1 遵义会议 · 四渡赤水 · 巧渡金沙江 · 强渡大渡河 · 飞夺泸定桥 · 翻雪山 · 过草地 · 1935.10 到达陕北吴起镇 · 1936.10 三大主力会师会宁\n1:03  1937—1945 全民族抗战 · 1938 发表《论持久战》\n1:13  1945.8  赴重庆谈判\n1:22  1949.10.1 中华人民共和国成立\n1:32  1949—1976 领导社会主义建设\n1:41  1976.9.9  逝世\n\n长征路线、途经点全部按真实经纬度投影：瑞金 116.03E/25.89N · 遵义 106.93E/27.73N · 泸定 102.23E/29.91N · 吴起 108.18E/36.93N\n\n#毛主席 #伟人 #历史 #长征 #红色记忆 #粒子特效 #视觉艺术 #近代史 #中国 #纪念" },
   ];
 
   document.getElementById("grid").innerHTML = VIDEOS.map(v => `
@@ -207,7 +210,7 @@
           <h3>${v.title}${v.featured ? '<span class="star">置顶</span>' : ""}</h3>
           ${v.desc ? `<p class="d">${v.desc}</p>` : ""}
         </div>
-        <a href="https://www.bilibili.com/video/${v.bvid}" target="_blank" rel="noopener">B 站观看 ↗</a>
+        ${v.bvid ? `<a href="https://www.bilibili.com/video/${v.bvid}" target="_blank" rel="noopener">B 站观看 ↗</a>` : ""}
       </div>
     </article>`).join("");
 
