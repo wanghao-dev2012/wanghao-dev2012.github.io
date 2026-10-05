@@ -1,0 +1,66 @@
+// ============================================================
+// 每日内容数据文件：往数组里加一行即可扩充
+// QUOTES: text=名言内容, author=出处/作者
+// SITES : name=网站名, desc=一句话介绍, url=网址
+// 页面会按「今天是一年中的第几天」自动轮换展示
+// ============================================================
+
+window.QUOTES = [
+  { text: "Stay hungry, stay foolish.", author: "史蒂夫·乔布斯" },
+  { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+  { text: "程序是写给人看的，附带能在机器上运行。", author: "Harold Abelson" },
+  { text: "任何足够先进的技术，都与魔法无异。", author: "阿瑟·克拉克" },
+  { text: "预测未来最好的方式，就是把它创造出来。", author: "Alan Kay" },
+  { text: "不积跬步，无以至千里；不积小流，无以成江海。", author: "荀子" },
+  { text: "天行健，君子以自强不息。", author: "《周易》" },
+  { text: "先解决问题，再写代码。", author: "John Johnson" },
+  { text: "简单性是可靠性的先决条件。", author: "Edsger Dijkstra" },
+  { text: "博观而约取，厚积而薄发。", author: "苏轼" },
+  { text: "AI 是工具，人类是方向。", author: "灵感码匠·视频" },
+  { text: "苟日新，日日新，又日新。", author: "《礼记》" },
+  { text: "千里之行，始于足下。", author: "老子" },
+  { text: "想象力比知识更重要。", author: "爱因斯坦" },
+  { text: "先让它能跑，再让它跑对，最后让它跑快。", author: "Kent Beck" },
+  { text: "纸上得来终觉浅，绝知此事要躬行。", author: "陆游" },
+  { text: "为者常成，行者常至。", author: "《晏子春秋》" },
+  { text: "宝剑锋从磨砺出，梅花香自苦寒来。", author: "《警世贤文》" },
+  { text: "未来已来，只是分布不均。", author: "William Gibson" },
+  { text: "少年易老学难成，一寸光阴不可轻。", author: "朱熹" },
+  { text: "调试代码的难度是写代码的两倍。", author: "Brian Kernighan" },
+  { text: "Vibe Coding 不是不写代码，是让灵感先跑起来。", author: "DEV-WangH" },
+  { text: "The only way to do great work is to love what you do.", author: "史蒂夫·乔布斯" },
+  { text: "路虽远，行则将至；事虽难，做则必成。", author: "荀子" },
+  { text: "Stay curious, keep building.", author: "致每一位创作者" },
+  { text: "合抱之木，生于毫末；九层之台，起于累土。", author: "老子" },
+  { text: "代码写得好，Bug 没处找；注释写得好，接班不烦恼。", author: "程序员谚语" },
+  { text: "独立思考，动手验证。", author: "科学精神" },
+  { text: "山重水复疑无路，柳暗花明又一村。", author: "陆游" },
+  { text: "永远不要停止学习。", author: "终身学习者" },
+  { text: "会用工具的人造轮子，会造工具的人造时代。", author: "DEV-WangH" },
+  { text: "Less is more.", author: "密斯·凡德罗" },
+];
+
+window.SITES = [
+  { name: "DeepSeek", desc: "会思考的国产大模型", url: "https://chat.deepseek.com" },
+  { name: "OpenAI", desc: "ChatGPT 的母公司", url: "https://openai.com" },
+  { name: "Anthropic", desc: "Claude 的母公司", url: "https://anthropic.com" },
+  { name: "Google", desc: "全球最大搜索引擎", url: "https://www.google.com" },
+  { name: "Apple", desc: "iPhone / Mac 制造商", url: "https://www.apple.com" },
+  { name: "Microsoft", desc: "Windows / Office 制造商", url: "https://www.microsoft.com" },
+  { name: "NVIDIA", desc: "AI 芯片之王", url: "https://www.nvidia.com" },
+  { name: "Tesla", desc: "电动车与自动驾驶", url: "https://www.tesla.com" },
+  { name: "SpaceX", desc: "把火箭送上天再接回来", url: "https://www.spacex.com" },
+  { name: "GitHub", desc: "全球最大的代码托管平台", url: "https://github.com" },
+  { name: "Hugging Face", desc: "AI 开源模型社区", url: "https://huggingface.co" },
+  { name: "华为", desc: "中国科技巨头", url: "https://www.huawei.com" },
+  { name: "小米", desc: "为发烧而生", url: "https://www.mi.com" },
+  { name: "字节跳动", desc: "抖音的母公司", url: "https://www.bytedance.com" },
+  { name: "腾讯", desc: "微信 / QQ 的母公司", url: "https://www.tencent.com" },
+  { name: "阿里云", desc: "中国最大云计算平台", url: "https://www.aliyun.com" },
+  { name: "百度", desc: "搜索 + 文心一言", url: "https://www.baidu.com" },
+  { name: "哔哩哔哩", desc: "年轻人都在看的视频社区", url: "https://www.bilibili.com" },
+  { name: "抖音", desc: "记录美好生活", url: "https://www.douyin.com" },
+  { name: "Stack Overflow", desc: "程序员们的问答广场", url: "https://stackoverflow.com" },
+  { name: "CSDN", desc: "中文技术社区", url: "https://www.csdn.net" },
+  { name: "稀土掘金", desc: "面向开发者的技术社区", url: "https://juejin.cn" },
+];

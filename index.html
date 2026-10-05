@@ -102,6 +102,19 @@
     background:linear-gradient(90deg,var(--a),var(--b));color:#fff;vertical-align:2px}
   @media(max-width:720px){.grid{grid-template-columns:1fr}}
 
+  /* ---------- 工具箱 & 每日一瞥 ---------- */
+  .tools-row{display:flex;gap:14px;flex-wrap:wrap}
+  .tool-btn{flex:1 1 220px;text-align:center;padding:18px 16px;border-radius:14px;text-decoration:none;
+    font-weight:700;font-size:15.5px;color:var(--ink);background:var(--card);
+    border:1px solid var(--line);transition:.25s}
+  .tool-btn:hover{transform:translateY(-3px);border-color:rgba(124,92,255,.55);
+    background:rgba(124,92,255,.1);box-shadow:0 10px 30px rgba(124,92,255,.22)}
+  .daily-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:18px}
+  .card.daily h3{font-size:15px;color:var(--muted);font-weight:600;margin:12px 0 6px}
+  .card.daily .quote{color:var(--ink);font-size:15.5px;line-height:1.8;white-space:pre-line}
+  .card.daily .src{color:var(--b);font-size:13.5px;margin-top:10px;display:inline-block;text-decoration:none}
+  .card.daily .src:hover{text-decoration:underline}
+
   /* ---------- 页脚 ---------- */
   footer{border-top:1px solid var(--line);margin-top:60px;padding:34px 24px;
     text-align:center;color:var(--muted);font-size:14px}
@@ -172,6 +185,30 @@
   </div>
 </section>
 
+<section class="reveal" id="tools">
+  <h2 class="sec-title">工具箱 &amp; <em>每日一瞥</em></h2>
+  <p class="sec-sub">几个常用入口，外加每天自动换新的小内容</p>
+  <div class="tools-row">
+    <a class="tool-btn" href="https://chat.deepseek.com" target="_blank" rel="noopener">🐳 DeepSeek 对话</a>
+    <a class="tool-btn" href="https://deepseek.com/harness" target="_blank" rel="noopener">📦 下载 DeepSeek Harness</a>
+    <a class="tool-btn" href="https://github.com/RikkaApps/Shizuku/releases/download/v13.6.0/shizuku-v13.6.0.r1086.2650830c-release.apk" target="_blank" rel="noopener">🤖 下载 Shizuku（安卓）</a>
+  </div>
+  <div class="daily-grid">
+    <div class="card daily">
+      <div class="ico">📜</div>
+      <h3>每日名言</h3>
+      <p class="quote" id="daily-quote">加载中…</p>
+      <p class="src" id="daily-quote-src"></p>
+    </div>
+    <div class="card daily">
+      <div class="ico">🌐</div>
+      <h3>每日一个网址</h3>
+      <p class="quote" id="daily-site">加载中…</p>
+      <a class="src" id="daily-site-link" target="_blank" rel="noopener">去逛逛 ↗</a>
+    </div>
+  </div>
+</section>
+
 <section class="reveal" id="videos">
   <h2 class="sec-title">我的<em>视频</em></h2>
   <p class="sec-sub">一些用 AI 做的影像实验，欢迎去 B 站观看 👇</p>
@@ -182,6 +219,7 @@
   © 2026 DEV-WangH · 用 ❤️ 和 AI 一起搭建 · <a href="https://www.douyin.com/user/MS4wLjABAAAA3HLod3-vBk2FhO3_y9RVE9tGa7BCVflG_HU4SAXzs5o?from_tab_name=main&vid=7692791050703818019" target="_blank" rel="noopener">抖音</a> · <a href="https://space.bilibili.com/3493136309422729?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">B 站</a> · 托管于 <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
 </footer>
 
+<script src="daily.js"></script>
 <script>
   // ➕ 以后加新视频：把视频文件放进 videos/ 文件夹，在下面加一行即可（数组顺序 = 页面顺序）
   const VIDEOS = [
@@ -213,6 +251,20 @@
         ${v.bvid ? `<a href="https://www.bilibili.com/video/${v.bvid}" target="_blank" rel="noopener">B 站观看 ↗</a>` : ""}
       </div>
     </article>`).join("");
+
+  // 每日名言 / 每日网址：按「今天是一年中的第几天」轮换（数据在 daily.js，往里加行即可扩充）
+  const today = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  if (window.QUOTES && QUOTES.length) {
+    const q = QUOTES[today % QUOTES.length];
+    document.getElementById("daily-quote").textContent = "“" + q.text + "”";
+    document.getElementById("daily-quote-src").textContent = "—— " + q.author;
+  }
+  if (window.SITES && SITES.length) {
+    const s = SITES[today % SITES.length];
+    document.getElementById("daily-site").textContent = s.name + " · " + s.desc;
+    const a = document.getElementById("daily-site-link");
+    a.href = s.url;
+  }
 
   // 滚动入场动画（不支持 IntersectionObserver 的老浏览器直接全部显示）
   const items = document.querySelectorAll(".reveal");
